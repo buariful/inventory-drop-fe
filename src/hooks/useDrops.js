@@ -10,7 +10,7 @@ export function useDrops() {
     setLoading(true);
     setError(null);
     try {
-      const res = await api.get("/drops");
+      const res = await api.get("/api/drops");
       return res.data;
     } catch (err) {
       const message =
@@ -26,7 +26,7 @@ export function useDrops() {
     setActionItemId(dropId);
     setError(null);
     try {
-      const res = await api.post(`/drops/${dropId}/reserve`);
+      const res = await api.post(`/api/drops/${dropId}/reserve`);
       return res.data;
     } catch (err) {
       const message =
@@ -42,7 +42,7 @@ export function useDrops() {
     setActionItemId(reserveId);
     setError(null);
     try {
-      const res = await api.post(`/drops/${reserveId}/purchase`);
+      const res = await api.post(`/api/drops/${reserveId}/purchase`);
       return res.data;
     } catch (err) {
       const message =
