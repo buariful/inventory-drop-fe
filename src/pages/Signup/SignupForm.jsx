@@ -34,19 +34,21 @@ export default function SignupForm() {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Name */}
+        {/* Username */}
         <div>
           <input
-            {...register("name")}
-            placeholder="Full Name"
+            {...register("username")}
+            placeholder="Username"
             className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
-              errors.name
+              errors.username
                 ? "border-red-500 focus:ring-red-200"
                 : "focus:ring-blue-200"
             }`}
           />
-          {errors.name && (
-            <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>
+          {errors.username && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.username.message}
+            </p>
           )}
         </div>
 

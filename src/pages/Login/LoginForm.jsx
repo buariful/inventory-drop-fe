@@ -19,13 +19,13 @@ export default function LoginForm() {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await loginUser(data.username, data.password);
+      const res = await loginUser(data.email, data.password);
       login(res.user);
       toast.success("Logged in successfully 🚀");
       navigate("/");
     } catch (err) {
       console.log(err);
-      toast.error("Invalid username or password");
+      toast.error(err?.response?.data?.message || "Invalid email or password");
     } finally {
       setLoading(false);
     }
@@ -33,19 +33,19 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      {/* Username */}
+      {/* Email */}
       <div>
         <input
-          {...register("username")}
-          placeholder="Username"
+          {...register("email")}
+          placeholder="Email"
           className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
-            errors.username
+            errors.email
               ? "border-red-500 focus:ring-red-200"
               : "focus:ring-blue-200"
           }`}
         />
-        {errors.username && (
-          <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
         )}
       </div>
 

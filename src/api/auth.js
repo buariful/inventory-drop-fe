@@ -1,11 +1,11 @@
 import api, { saveTokens } from "./axios";
 
-export const loginUser = async (username, password) => {
-  const res = await api.post("/auth/login", { username, password });
-  saveTokens(res.data.accessToken, res.data.refreshToken);
-  return res.data; // contains user
+export const loginUser = async (email, password) => {
+  const res = await api.post("/auth/login", { email, password });
+  saveTokens(res.data.data.accessToken, res.data.data.refreshToken);
+  return res.data.data; // contains user
 };
 
-export const signupUser = async (username, password) => {
-  await api.post("/auth/register", { username, password });
+export const signupUser = async ({ username, email, password }) => {
+  await api.post("/auth/signup", { username, email, password });
 };

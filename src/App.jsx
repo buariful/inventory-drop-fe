@@ -18,7 +18,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/drops" element={<DropsPage />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
