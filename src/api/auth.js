@@ -7,5 +7,7 @@ export const loginUser = async (email, password) => {
 };
 
 export const signupUser = async ({ username, email, password }) => {
-  await api.post("/auth/signup", { username, email, password });
+  const res = await api.post("/auth/signup", { username, email, password });
+  saveTokens(res.data.data.accessToken, res.data.data.refreshToken);
+  return res.data.data;
 };

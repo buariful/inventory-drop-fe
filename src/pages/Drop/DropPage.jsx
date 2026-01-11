@@ -24,11 +24,13 @@ export default function DropsPage() {
     socket.connect(); // connect socket
 
     // example: listen for stock updates
-    socket.on("stock_update", (data) => {
-      console.log("Stock updated:", data);
-      loadDrops();
+    socket.on("stock_update", ({ availableStock, dropId }) => {
+      setDrops((prevDrops) =>
+        prevDrops.map((drop) =>
+          drop.id === dropId ? { ...drop, availableStock } : drop
+        )
+      );
     });
-
     return () => {
       socket.disconnect(); // clean up on unmount
     };

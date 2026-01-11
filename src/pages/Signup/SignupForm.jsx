@@ -23,7 +23,7 @@ export default function SignupForm() {
       setLoading(true);
       await signupUser(data);
       toast.success("Account created successfully");
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       toast.error(err?.response?.data?.message || "Signup failed");
     } finally {
