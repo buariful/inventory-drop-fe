@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_BASE =
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:4000/api";
+const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
 // helpers
 const getAccessToken = () => localStorage.getItem("accessToken");
